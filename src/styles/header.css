@@ -1,0 +1,11 @@
+.title {
+    font-size: 3.5rem;
+    padding: 2.5rem;
+    color: #ffd046;
+}
+
+.title__decoration {
+    color: #ff3864;
+    font-size: 4rem;
+    font-weight: 900;
+}
