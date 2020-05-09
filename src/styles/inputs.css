@@ -9,14 +9,13 @@
 
 .form .wrapper {
     max-width: 30%;
-    /* border: 1px solid #ffd046; */
     border-radius: 8px;
     padding: 2.5rem .0 .5rem 0;
     position: relative;
 }
 
 .form .input {
-    background-color: #05b2dc;
+    background-color: #dcd8d3;
     max-width: 100%;
     overflow: hidden;
     outline: none;
@@ -24,7 +23,7 @@
     box-shadow: none;
     font-size: 2rem;
     padding: .5rem 1rem;
-    color: #080357;
+    color: #171717;
     text-align: center;
     border-radius: 2px;
 }
@@ -34,7 +33,7 @@
 }
 
 .form .label {
-    color: #ffd046;
+    color: #ff3864;
     font-size: 1.4rem;
     letter-spacing: 1px;
     position: absolute;
@@ -53,4 +52,9 @@
 
 .inputs .btn:hover {
     background-color: #ff3864;
+}
+
+.errorMsg {
+    color: #ff3864;
+    padding: 0.2rem 0;
 }
