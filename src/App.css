@@ -1,5 +1,14 @@
 .App {
   text-align: center;
-  background-color: #080357;
   background-color: #171717;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.App-header {
+  height: 15%;
+}
+
+.App-main {
+  height: 85%;
 }

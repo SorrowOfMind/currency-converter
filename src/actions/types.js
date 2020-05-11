@@ -1,0 +1,3 @@
+export const FETCH_EXRATES = 'FETCH_EXRATES';
+export const SET_INPUTS_DATA = "SET_INPUTS_DATA";
+export const FETCH_COUNTRIES = 'FETCH_COUNTRIES';

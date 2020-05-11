@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+
 import Button from '@material-ui/core/Button';
+
+import * as actionCreator from '../actions/actions';
 
 import '../styles/inputs.css';
 
@@ -8,7 +13,7 @@ export class Inputs extends Component {
         super(props);
         this.state = {
             inputs: {
-                amount: 0,
+                amount: '',
                 from: '',
                 to: ''
             },
@@ -18,7 +23,7 @@ export class Inputs extends Component {
 
     onChange = e => {
         let inputs = this.state.inputs;
-        inputs[e.target.name] = e.target.value;
+        inputs[e.target.name] = (e.target.value).toUpperCase().trim();
         this.setState({inputs});
         console.log(this.state);
     }
@@ -79,9 +84,19 @@ export class Inputs extends Component {
 
     onSubmit = e => {
         e.preventDefault();
+        const input = this.state.inputs;
         if (this.validateInputs()) {
+            this.props.setInputsData(input);
+            this.props.fetchExRates(input);
+            this.props.fetchCountries(input.to);
             
         }
+
+        this.setState({inputs:{
+            amount: '',
+            from : '',
+            to: ''
+        }});
     }
 
     render() {
@@ -96,6 +111,7 @@ export class Inputs extends Component {
                             className="input input__amount" 
                             id="amount"
                             name="amount"
+                            value={this.state.inputs.amount}
                             onChange={this.onChange}
                         />
                         <div className="errorMsg">{error.amount}</div>
@@ -107,6 +123,7 @@ export class Inputs extends Component {
                             className="input input__from" 
                             id="from"
                             name="from"
+                            value={this.state.inputs.from}
                             onChange={this.onChange}
                         />
                         <div className="errorMsg">{error.from}</div>
@@ -118,15 +135,34 @@ export class Inputs extends Component {
                             className="input input__to" 
                             id="to"
                             name="to"
+                            value={this.state.inputs.to}
                             onChange={this.onChange}
                         />
                         <div className="errorMsg">{error.to}</div>
                     </div>
                 </div>
-                <Button type="submit" className="btn" variant="contained" >Calculate</Button>
+                <Button 
+                    type="submit" 
+                    className="btn" 
+                    variant="contained" 
+                    >Calculate</Button>
             </form>
         )
     }
 }
 
-export default Inputs;
+Inputs.propTypes = {
+    fetchExRates: PropTypes.func.isRequired,
+    fetchCountries: PropTypes.func.isRequired,
+    setInputsData: PropTypes.func.isRequired
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchExRates: obj => dispatch(actionCreator.fetchExRates(obj)),
+        setInputsData: obj => dispatch(actionCreator.setInputsData(obj)),
+        fetchCountries: str => dispatch(actionCreator.fetchCountries(str))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Inputs);

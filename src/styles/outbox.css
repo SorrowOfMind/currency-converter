@@ -1,0 +1,31 @@
+.App-main .card__wrapper {
+    padding: 2rem;
+    height: 63vh;
+    max-height: 700px;
+}
+ 
+.card__wrapper > .card {
+    height: 100%;
+}
+
+.card__wrapper .card__totalAmount {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #171717;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    padding: 0 0 1rem 0;
+}
+
+.card__wrapper .card__countries {
+    padding: 1rem;
+    overflow: auto;
+    border: 1px solid rgba(0,0,0,0.2);
+    max-height: 40vh;
+}
+
+.card__wrapper .card__countries span {
+    font-size: 1.6rem;
+    font-weight: bold;
+    display: block;
+    padding: 0 0 1rem 0;
+}
